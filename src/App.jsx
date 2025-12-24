@@ -299,7 +299,8 @@ export default function App() {
                {/* KPI Box for Print - Improved Look */}
                <div className="text-right">
                   <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1">Gesamterreichung</div>
-                  <div className="text-6xl font-black text-slate-900 leading-none tracking-tighter">{averageProgress}<span className="text-2xl text-slate-400 ml-1">%</span></div>
+                  {/* Changed leading-none to leading-tight to prevent cut-off */}
+                  <div className="text-6xl font-black text-slate-900 leading-tight tracking-tighter">{averageProgress}<span className="text-2xl text-slate-400 ml-1">%</span></div>
                </div>
             </div>
 
@@ -320,7 +321,7 @@ export default function App() {
               <div>
                 <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-500 font-bold print:text-[10px] print:mb-1">Datum</label>
                 <div className="flex gap-3 items-center">
-                    {/* Icon removed here as requested */}
+                    {/* Icon removed */}
                     <input 
                       type="date" 
                       value={activeEmployee.date}
