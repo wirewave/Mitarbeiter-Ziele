@@ -292,13 +292,12 @@ export default function App() {
           <div className="bg-slate-800 text-white p-10 print:bg-white print:text-black print:p-0 print:mb-8 print:border-b-2 print:border-slate-800">
             {/* Print Only Title */}
             <div className="hidden print:block mb-8">
-               <h1 className="text-3xl font-bold uppercase tracking-wider text-slate-900 mb-2">Zielvereinbarung</h1>
+               <h1 className="text-3xl font-bold uppercase tracking-wider text-slate-900 mb-2">Jahresziele</h1>
                <div className="h-1 w-20 bg-slate-900"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                {/* Geändert: "Mitarbeiter" statt "Mitarbeiter Name" */}
                 <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-600 font-bold print:text-xs">Mitarbeiter</label>
                 <div className="flex items-center gap-3">
                   <User className="w-6 h-6 text-slate-400 print:hidden" />
@@ -325,7 +324,7 @@ export default function App() {
               </div>
             </div>
             
-            <div className="mt-10 p-5 bg-slate-700/50 rounded-xl flex items-center justify-between border border-slate-600/50 print:bg-transparent print:border-slate-300 print:mt-4 print:p-2">
+            <div className="mt-10 p-5 bg-slate-700/50 rounded-xl flex items-center justify-between border border-slate-600/50 print:bg-transparent print:border-none print:mt-4 print:p-2">
               <div className="flex items-center gap-4">
                 <div className="p-2 bg-blue-500/20 rounded-lg print:hidden"><BarChart3 className="w-6 h-6 text-blue-400" /></div>
                 <span className="font-medium text-lg print:text-sm print:font-bold print:uppercase">Gesamtzielerreichung</span>
