@@ -289,16 +289,24 @@ export default function App() {
         <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden print:shadow-none print:w-full print:max-w-none print:rounded-none">
           
           {/* Header Section */}
-          <div className="bg-slate-800 text-white p-10 print:bg-white print:text-black print:p-0 print:mb-8 print:border-b-2 print:border-slate-800">
-            {/* Print Only Title */}
-            <div className="hidden print:block mb-8">
-               <h1 className="text-3xl font-bold uppercase tracking-wider text-slate-900 mb-2">Jahresziele</h1>
-               <div className="h-1 w-20 bg-slate-900"></div>
+          <div className="bg-slate-800 text-white p-10 print:bg-white print:text-black print:p-0 print:mb-12 print:border-b-4 print:border-slate-800">
+            {/* Print Only Modern Header */}
+            <div className="hidden print:flex justify-between items-start mb-8">
+               <div>
+                  <h1 className="text-4xl font-black uppercase tracking-tight text-slate-900 leading-none">Jahresziele</h1>
+                  <p className="text-slate-500 font-medium text-sm mt-1">Zielvereinbarung & Leistungsbeurteilung</p>
+               </div>
+               
+               {/* KPI Box for Print */}
+               <div className="bg-slate-100 p-4 rounded-lg text-right min-w-[150px]">
+                  <div className="text-xs uppercase font-bold text-slate-500 mb-1">Gesamt</div>
+                  <div className="text-3xl font-black text-slate-900">{averageProgress}%</div>
+               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 print:grid-cols-2 print:gap-12">
               <div>
-                <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-600 font-bold print:text-xs">Mitarbeiter</label>
+                <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-500 font-bold print:text-[10px] print:mb-1">Mitarbeiter</label>
                 <div className="flex items-center gap-3">
                   <User className="w-6 h-6 text-slate-400 print:hidden" />
                   <input 
@@ -306,30 +314,31 @@ export default function App() {
                     value={activeEmployee.name}
                     onChange={(e) => updateActiveEmployee('name', e.target.value)}
                     placeholder="Name eingeben"
-                    className="bg-transparent border-b-2 border-slate-600 w-full focus:outline-none focus:border-blue-400 text-3xl font-medium placeholder-slate-600/50 print:text-black print:border-none print:p-0 print:font-bold print:text-xl"
+                    className="bg-transparent border-b-2 border-slate-600 w-full focus:outline-none focus:border-blue-400 text-3xl font-medium placeholder-slate-600/50 print:text-slate-900 print:border-none print:p-0 print:font-bold print:text-xl print:placeholder-transparent"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-600 font-bold print:text-xs">Datum</label>
+                <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-500 font-bold print:text-[10px] print:mb-1">Datum</label>
                 <div className="flex gap-3 items-center">
                     <Briefcase className="w-6 h-6 text-slate-400 print:hidden" />
                     <input 
                       type="date" 
                       value={activeEmployee.date}
                       onChange={(e) => updateActiveEmployee('date', e.target.value)}
-                      className="bg-transparent border-b-2 border-slate-600 w-full focus:outline-none focus:border-blue-400 text-2xl print:text-black print:border-none print:p-0 print:text-lg"
+                      className="bg-transparent border-b-2 border-slate-600 w-full focus:outline-none focus:border-blue-400 text-2xl print:text-slate-900 print:border-none print:p-0 print:text-xl print:font-medium"
                     />
                 </div>
               </div>
             </div>
             
-            <div className="mt-10 p-5 bg-slate-700/50 rounded-xl flex items-center justify-between border border-slate-600/50 print:bg-transparent print:border-none print:mt-4 print:p-2">
+            {/* Screen-Only KPI Box */}
+            <div className="mt-10 p-5 bg-slate-700/50 rounded-xl flex items-center justify-between border border-slate-600/50 print:hidden">
               <div className="flex items-center gap-4">
-                <div className="p-2 bg-blue-500/20 rounded-lg print:hidden"><BarChart3 className="w-6 h-6 text-blue-400" /></div>
-                <span className="font-medium text-lg print:text-sm print:font-bold print:uppercase">Gesamtzielerreichung</span>
+                <div className="p-2 bg-blue-500/20 rounded-lg"><BarChart3 className="w-6 h-6 text-blue-400" /></div>
+                <span className="font-medium text-lg">Gesamtzielerreichung</span>
               </div>
-              <div className="text-4xl font-bold text-blue-300 print:text-black tracking-tight">{averageProgress}%</div>
+              <div className="text-4xl font-bold text-blue-300 tracking-tight">{averageProgress}%</div>
             </div>
           </div>
 
@@ -361,42 +370,42 @@ export default function App() {
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                  >
                     {activeEmployee.goals && activeEmployee.goals.map((goal, index) => (
-                      <div key={goal.id} className="min-w-[90%] md:w-[600px] flex-shrink-0 relative group border border-slate-200 rounded-2xl p-8 hover:shadow-2xl hover:shadow-slate-200/50 transition-all bg-white snap-center print:w-full print:mb-6 print:border-0 print:border-b print:border-slate-300 print:shadow-none print:rounded-none print:p-0 print:pb-4 print:break-inside-avoid">
+                      <div key={goal.id} className="min-w-[90%] md:w-[600px] flex-shrink-0 relative group border border-slate-200 rounded-2xl p-8 hover:shadow-2xl hover:shadow-slate-200/50 transition-all bg-white snap-center print:w-full print:mb-8 print:border-0 print:border-b print:border-slate-200 print:shadow-none print:rounded-none print:p-0 print:pb-8 print:break-inside-avoid">
                         
                         {/* Card Header */}
-                        <div className="flex justify-between items-start mb-6">
-                          <div className="flex items-center gap-5 w-full">
-                            <div className="bg-slate-900 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg shrink-0 print:bg-transparent print:text-black print:border print:border-black print:w-8 print:h-8 print:text-sm">
-                              {index + 1}
+                        <div className="flex justify-between items-start mb-6 print:mb-2">
+                          <div className="flex items-center gap-5 w-full print:gap-4 print:items-baseline">
+                            <div className="bg-slate-900 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg shrink-0 print:bg-transparent print:text-slate-400 print:w-auto print:h-auto print:text-sm print:font-mono">
+                              {(index + 1).toString().padStart(2, '0')}.
                             </div>
                             <input
                               type="text"
                               value={goal.title}
                               onChange={(e) => updateGoal(goal.id, 'title', e.target.value)}
                               placeholder="Titel des Ziels"
-                              className="font-bold text-xl md:text-2xl text-slate-800 bg-transparent border-b-2 border-transparent focus:border-blue-500 focus:outline-none w-full mr-2 placeholder-slate-300 py-1 transition-all print:text-black print:text-lg"
+                              className="font-bold text-xl md:text-2xl text-slate-800 bg-transparent border-b-2 border-transparent focus:border-blue-500 focus:outline-none w-full mr-2 placeholder-slate-300 py-1 transition-all print:text-slate-900 print:text-lg print:font-bold print:p-0"
                             />
                           </div>
                           <button onClick={() => initiateDeleteGoal(goal.id)} className="text-slate-300 hover:text-red-500 hover:bg-red-50 p-2 rounded-lg transition-all print:hidden opacity-0 group-hover:opacity-100"><Trash2 className="w-5 h-5" /></button>
                         </div>
 
                         {/* Description */}
-                        <div className="pl-16 mb-8 print:pl-10 print:mb-2">
-                          <label className="block text-xs text-slate-400 mb-2 uppercase font-bold tracking-wider print:text-slate-500 print:text-[10px]">Beschreibung</label>
+                        <div className="pl-16 mb-8 print:pl-10 print:mb-4">
+                          <label className="block text-xs text-slate-400 mb-2 uppercase font-bold tracking-wider print:hidden">Beschreibung</label>
                           <textarea
                             value={goal.description}
                             onChange={(e) => updateGoal(goal.id, 'description', e.target.value)}
                             placeholder="Beschreiben Sie das Ziel ausführlich..."
-                            className="w-full bg-slate-50 text-slate-700 text-lg leading-relaxed resize-none focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 rounded-xl p-4 transition-all min-h-[160px] print:bg-transparent print:p-0 print:min-h-0 print:text-sm print:text-black print:leading-normal print:h-auto"
+                            className="w-full bg-slate-50 text-slate-700 text-lg leading-relaxed resize-none focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 rounded-xl p-4 transition-all min-h-[160px] print:bg-transparent print:p-0 print:min-h-0 print:text-sm print:text-slate-700 print:leading-relaxed print:h-auto"
                           />
                         </div>
 
                         {/* Footer / Progress */}
                         <div className="pl-16 mt-auto print:pl-10">
-                          <div className="flex justify-between items-end mb-3">
-                            <label className="text-sm font-bold text-slate-400 uppercase tracking-wider print:text-[10px]">Erreichung</label>
+                          <div className="flex justify-between items-end mb-3 print:mb-1">
+                            <label className="text-sm font-bold text-slate-400 uppercase tracking-wider print:text-[10px] print:text-slate-500">Zielerreichung</label>
                             
-                            <span className="font-bold text-xl">{goal.progress}%</span>
+                            <span className="font-bold text-xl print:text-sm print:text-slate-900">{goal.progress}%</span>
                           </div>
 
                           {/* Interactive Slider for Desktop / Visual Bar for Print */}
@@ -428,8 +437,8 @@ export default function App() {
                             />
                           </div>
 
-                          {/* Print Version Bar (Simpler) */}
-                          <div className="hidden print:block relative h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200 mt-2">
+                          {/* Print Version Bar (Clean & Thin) */}
+                          <div className="hidden print:block relative h-1.5 bg-slate-100 rounded-full overflow-hidden w-full mt-1">
                             <div className={`absolute top-0 left-0 h-full ${getProgressColor(goal.progress)} print:bg-slate-800`} style={{ width: `${goal.progress}%` }}></div>
                           </div>
                         </div>
@@ -454,17 +463,17 @@ export default function App() {
           </div>
           
           {/* Signature Footer */}
-          <div className="bg-slate-50 p-16 border-t border-slate-200 text-sm text-slate-500 hidden print:block print:bg-white print:p-0 print:mt-12 print:border-none">
-             <div className="grid grid-cols-2 gap-12 mt-8">
+          <div className="bg-slate-50 p-16 border-t border-slate-200 text-sm text-slate-500 hidden print:block print:bg-white print:p-0 print:mt-16 print:border-none">
+             <div className="grid grid-cols-2 gap-16 mt-8">
                 <div>
-                  <div className="border-t border-black pt-2 w-3/4"></div>
-                  <p className="font-bold text-black text-xs uppercase tracking-wider mb-1">Mitarbeiter</p>
-                  <p className="text-[10px] text-slate-600">Ort, Datum, Unterschrift</p>
+                  <div className="border-t border-slate-400 pt-2 w-full"></div>
+                  <p className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1">Mitarbeiter</p>
+                  <p className="text-[10px] text-slate-500">Ort, Datum, Unterschrift</p>
                 </div>
                 <div>
-                  <div className="border-t border-black pt-2 w-3/4"></div>
-                  <p className="font-bold text-black text-xs uppercase tracking-wider mb-1">Vorgesetzter</p>
-                  <p className="text-[10px] text-slate-600">Ort, Datum, Unterschrift</p>
+                  <div className="border-t border-slate-400 pt-2 w-full"></div>
+                  <p className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1">Vorgesetzter</p>
+                  <p className="text-[10px] text-slate-500">Ort, Datum, Unterschrift</p>
                 </div>
              </div>
           </div>
@@ -478,14 +487,15 @@ export default function App() {
         
         /* Print Optimization */
         @media print {
-          @page { margin: 1.5cm; size: A4; }
+          @page { margin: 15mm; size: A4; }
           body { 
             -webkit-print-color-adjust: exact; 
             print-color-adjust: exact; 
             overflow: visible !important; 
             height: auto !important; 
             background: white !important;
-            font-size: 11pt;
+            font-size: 10pt;
+            color: #0f172a;
           }
           /* Reset React Root Layout */
           #root, .min-h-screen { 
