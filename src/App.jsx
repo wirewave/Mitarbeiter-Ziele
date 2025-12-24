@@ -291,16 +291,15 @@ export default function App() {
           {/* Header Section */}
           <div className="bg-slate-800 text-white p-10 print:bg-white print:text-black print:p-0 print:mb-12 print:border-b-4 print:border-slate-800">
             {/* Print Only Modern Header */}
-            <div className="hidden print:flex justify-between items-start mb-8">
+            <div className="hidden print:flex justify-between items-end mb-8">
                <div>
                   <h1 className="text-4xl font-black uppercase tracking-tight text-slate-900 leading-none">Jahresziele</h1>
-                  <p className="text-slate-500 font-medium text-sm mt-1">Zielvereinbarung & Leistungsbeurteilung</p>
                </div>
                
-               {/* KPI Box for Print */}
-               <div className="bg-slate-100 p-4 rounded-lg text-right min-w-[150px]">
-                  <div className="text-xs uppercase font-bold text-slate-500 mb-1">Gesamt</div>
-                  <div className="text-3xl font-black text-slate-900">{averageProgress}%</div>
+               {/* KPI Box for Print - Improved Look */}
+               <div className="text-right">
+                  <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1">Gesamterreichung</div>
+                  <div className="text-6xl font-black text-slate-900 leading-none tracking-tighter">{averageProgress}<span className="text-2xl text-slate-400 ml-1">%</span></div>
                </div>
             </div>
 
@@ -321,7 +320,7 @@ export default function App() {
               <div>
                 <label className="block text-slate-400 text-sm mb-2 uppercase tracking-wider print:text-slate-500 font-bold print:text-[10px] print:mb-1">Datum</label>
                 <div className="flex gap-3 items-center">
-                    <Briefcase className="w-6 h-6 text-slate-400 print:hidden" />
+                    {/* Icon removed here as requested */}
                     <input 
                       type="date" 
                       value={activeEmployee.date}
